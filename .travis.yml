@@ -1,0 +1,9 @@
+language: generic
+services: 
+  - docker
+
+before_install:
+  - docker build -t kellydouglass/docker_travis_practice -f Dockerfile.dev .
+
+script:
+- docker run -e CI=true kellydouglass/docker_travis_practice npm run test -- --coverage
